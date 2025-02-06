@@ -2,20 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controlador;
+package ec.edu.espoch.practicamvc.constructor;
+
+import ec.edu.espoch.practicamvc.modelo.GestorTarea;
+import vista.Vista;
 
 /**
  *
- * @author USER
+ * @author HP
  */
 public class Controlador {
-
     private Vista vista;
-    private GestordeTareas modelo;
+    private GestorTarea modelo;
 
     public Controlador(Vista vista) {
         this.vista = vista;
-        this.modelo = new GestordeTareas();
+        this.modelo = new GestorTarea();
     }
 
     public void procesoGestorTareas() {
@@ -38,5 +40,4 @@ public class Controlador {
             vista.Error("Error: " + e.getMessage());
         }
     }
-}    
-
+}
