@@ -4,6 +4,8 @@
 
 package ec.edu.espoch.practicamvc;
 
+import ec.edu.espoch.practicamvc.Vista.Vista;
+
 /**
  *
  * @author USER
@@ -11,6 +13,7 @@ package ec.edu.espoch.practicamvc;
 public class PracticaMvc {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Vista objVista=new Vista();
+        objVista.setVisible(true);
     }
 }

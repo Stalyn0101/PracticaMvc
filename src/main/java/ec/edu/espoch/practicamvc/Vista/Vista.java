@@ -18,14 +18,26 @@ public class Vista extends javax.swing.JFrame {
         Menu3.addActionListener(e -> System.out.println("Listar tareas completas"));
     }
     public String getNombreTarea(){
-        return TextNomTar.getText();
+        return txtTitulo.getText();
         
     }
     public String getDescripcionTarea(){
-        return TextDesTar.getText();
+        return txtDescripcion.getText();
         
     }
-   
+   public void Error(String error) {
+        txtError.setText(error);
+    }
+
+    public String getEstadoSeleccionado() {
+        if (cbxCompleto.isSelected()) {
+            return "Completa";
+        } else if (cbxIncompleto.isSelected()) {
+            return "Pendiente";
+        } else {
+            return "";
+        }
+    }
     
 
     /**
@@ -84,9 +96,9 @@ public class Vista extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
         jComboBox4 = new javax.swing.JComboBox<>();
-        TextNomTar = new javax.swing.JTextField();
+        txtTitulo = new javax.swing.JTextField();
         LblDesTar = new javax.swing.JLabel();
-        TextDesTar = new javax.swing.JTextField();
+        txtDescripcion = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
         BtnGuar = new javax.swing.JButton();
@@ -99,8 +111,9 @@ public class Vista extends javax.swing.JFrame {
         jScrollPane10 = new javax.swing.JScrollPane();
         jTextArea7 = new javax.swing.JTextArea();
         jToggleButton2 = new javax.swing.JToggleButton();
-        ChBoxPen = new javax.swing.JCheckBox();
-        ChBoxCom = new javax.swing.JCheckBox();
+        cbxIncompleto = new javax.swing.JCheckBox();
+        cbxCompleto = new javax.swing.JCheckBox();
+        txtError = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         Menu = new javax.swing.JMenu();
         Menu2 = new javax.swing.JMenuItem();
@@ -207,18 +220,18 @@ public class Vista extends javax.swing.JFrame {
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Agregar nueva tarea", "Salir" }));
 
-        TextNomTar.addActionListener(new java.awt.event.ActionListener() {
+        txtTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextNomTarActionPerformed(evt);
+                txtTituloActionPerformed(evt);
             }
         });
 
         LblDesTar.setFont(new java.awt.Font("Arial", 3, 12)); // NOI18N
         LblDesTar.setText("Descripcion de la tarea:");
 
-        TextDesTar.addActionListener(new java.awt.event.ActionListener() {
+        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextDesTarActionPerformed(evt);
+                txtDescripcionActionPerformed(evt);
             }
         });
 
@@ -282,9 +295,9 @@ public class Vista extends javax.swing.JFrame {
 
         jToggleButton2.setText("jToggleButton2");
 
-        ChBoxPen.setText("Pendiente");
+        cbxIncompleto.setText("Pendiente");
 
-        ChBoxCom.setText("Completada");
+        cbxCompleto.setText("Completada");
 
         Menu.setText("Tareas");
 
@@ -329,15 +342,14 @@ public class Vista extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(34, 34, 34)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(ChBoxCom)
+                                            .addComponent(cbxCompleto)
                                             .addComponent(BtnGuar))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TextNomTar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(TextDesTar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(396, 396, 396))))
-                            .addComponent(jLabel7)))
+                                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel7))
+                        .addGap(393, 393, 393))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
@@ -350,8 +362,12 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BtnBorr)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ChBoxPen))
+                    .addComponent(cbxIncompleto))
                 .addGap(224, 224, 224))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(279, 279, 279)
+                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,13 +388,13 @@ public class Vista extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(LblDesTar)
-                                    .addComponent(TextDesTar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(35, 35, 35)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(ChBoxPen)
-                                            .addComponent(ChBoxCom)))
+                                            .addComponent(cbxIncompleto)
+                                            .addComponent(cbxCompleto)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(85, 85, 85)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -392,20 +408,22 @@ public class Vista extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LblNomTar)
-                            .addComponent(TextNomTar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                            .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TextNomTarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNomTarActionPerformed
+    private void txtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextNomTarActionPerformed
+    }//GEN-LAST:event_txtTituloActionPerformed
 
-    private void TextDesTarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextDesTarActionPerformed
+    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TextDesTarActionPerformed
+    }//GEN-LAST:event_txtDescripcionActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
@@ -454,53 +472,21 @@ public class Vista extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Vista().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBorr;
     private javax.swing.JButton BtnGuar;
-    private javax.swing.JCheckBox ChBoxCom;
-    private javax.swing.JCheckBox ChBoxPen;
     private javax.swing.JLabel LabelTitu;
     private javax.swing.JLabel LblDesTar;
     private javax.swing.JLabel LblNomTar;
     private javax.swing.JMenu Menu;
     private javax.swing.JMenuItem Menu2;
     private javax.swing.JMenuItem Menu3;
-    private javax.swing.JTextField TextDesTar;
-    private javax.swing.JTextField TextNomTar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JCheckBox cbxCompleto;
+    private javax.swing.JCheckBox cbxIncompleto;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
@@ -557,6 +543,9 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtError;
+    private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 
     private static class gestorTareas {

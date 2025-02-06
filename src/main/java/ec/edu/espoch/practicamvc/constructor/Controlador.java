@@ -4,8 +4,10 @@
  */
 package ec.edu.espoch.practicamvc.constructor;
 
+import ec.edu.espoch.practicamvc.Vista.Vista;
 import ec.edu.espoch.practicamvc.modelo.GestorTarea;
-import vista.Vista;
+import ec.edu.espoch.practicamvc.modelo.Tarea;
+
 
 /**
  *
@@ -24,15 +26,15 @@ public class Controlador {
         String titulo, descripcion, estado;
 
         try {
-            titulo = vista.getTxtTitulo();
-            descripcion = vista.getTxtDescripcion();
+            titulo = vista.getNombreTarea();
+            descripcion = vista.getDescripcionTarea();
             estado = vista.getEstadoSeleccionado(); 
 
             if (titulo.isEmpty() || descripcion.isEmpty() || estado.isEmpty()) {
                 throw new Exception("Por favor complete todos los campos y seleccione un estado.");
             }
 
-            modelo.agregarTareas(new Tarea(0, titulo, descripcion, true));
+            modelo.agregarTarea(0, titulo, descripcion, true);
 
             vista.Error("Tarea registrada con éxito.");
 

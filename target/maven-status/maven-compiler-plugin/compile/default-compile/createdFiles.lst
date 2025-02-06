@@ -1,5 +1,9 @@
+ec\edu\espoch\practicamvc\Vista\TareasPendientes.class
 ec\edu\espoch\practicamvc\Vista\Vista$7.class
 ec\edu\espoch\practicamvc\Vista\Vista$6.class
+ec\edu\espoch\practicamvc\modelo\Tarea.class
+ec\edu\espoch\practicamvc\modelo\GestorTarea.class
+ec\edu\espoch\practicamvc\constructor\Controlador.class
 ec\edu\espoch\practicamvc\Vista\Vista$2.class
 ec\edu\espoch\practicamvc\Vista\Vista$5.class
 ec\edu\espoch\practicamvc\PracticaMvc.class
@@ -11,3 +15,4 @@ ec\edu\espoch\practicamvc\Vista\Vista$8.class
 ec\edu\espoch\practicamvc\Vista\Vista$gestorTareas.class
 ec\edu\espoch\practicamvc\Vista\Vista.class
 ec\edu\espoch\practicamvc\Vista\Vista$3.class
+ec\edu\espoch\practicamvc\Vista\TareasCompletas.class

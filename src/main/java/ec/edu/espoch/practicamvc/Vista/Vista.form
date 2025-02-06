@@ -350,15 +350,15 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="ChBoxCom" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxCompleto" min="-2" max="-2" attributes="0"/>
                                           <Component id="BtnGuar" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="TextNomTar" min="-2" pref="169" max="-2" attributes="0"/>
-                                  <Component id="TextDesTar" min="-2" pref="166" max="-2" attributes="0"/>
+                                  <Component id="txtTitulo" min="-2" pref="169" max="-2" attributes="0"/>
+                                  <Component id="txtDescripcion" min="-2" pref="166" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
@@ -380,9 +380,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="BtnBorr" min="-2" max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <Component id="ChBoxPen" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbxIncompleto" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="279" max="-2" attributes="0"/>
+              <Component id="txtError" min="-2" pref="320" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -408,14 +413,14 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="LblDesTar" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TextDesTar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtDescripcion" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="ChBoxPen" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="ChBoxCom" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxIncompleto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxCompleto" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -437,11 +442,13 @@
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="LblNomTar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TextNomTar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <Component id="txtError" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -508,9 +515,9 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="TextNomTar">
+    <Component class="javax.swing.JTextField" name="txtTitulo">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextNomTarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTituloActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="LblDesTar">
@@ -521,9 +528,9 @@
         <Property name="text" type="java.lang.String" value="Descripcion de la tarea:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="TextDesTar">
+    <Component class="javax.swing.JTextField" name="txtDescripcion">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextDesTarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDescripcionActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane5">
@@ -642,15 +649,17 @@
         <Property name="text" type="java.lang.String" value="jToggleButton2"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="ChBoxPen">
+    <Component class="javax.swing.JCheckBox" name="cbxIncompleto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pendiente"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JCheckBox" name="ChBoxCom">
+    <Component class="javax.swing.JCheckBox" name="cbxCompleto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Completada"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtError">
     </Component>
   </SubComponents>
 </Form>
