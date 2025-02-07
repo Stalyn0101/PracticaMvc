@@ -1,6 +1,7 @@
 
 package ec.edu.espoch.practicamvc.Vista;
 
+import ec.edu.espoch.practicamvc.constructor.Controlador;
 import java.util.Scanner;
 import javax.swing.JTextField;
 
@@ -26,6 +27,10 @@ public class Vista extends javax.swing.JFrame {
         
     }
    public void Error(String error) {
+        Error(error);
+    }
+
+    public void Error(String error) {
         txtError.setText(error);
     }
 
@@ -90,6 +95,7 @@ public class Vista extends javax.swing.JFrame {
         jPopupMenu3 = new javax.swing.JPopupMenu();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        jMenu5 = new javax.swing.JMenu();
         LabelTitu = new javax.swing.JLabel();
         LblNomTar = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -120,6 +126,7 @@ public class Vista extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         Menu3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        itemSalir = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -204,6 +211,8 @@ public class Vista extends javax.swing.JFrame {
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+
+        jMenu5.setText("jMenu5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFocusTraversalPolicyProvider(true);
@@ -321,6 +330,15 @@ public class Vista extends javax.swing.JFrame {
         jMenuBar1.add(Menu);
 
         jMenu4.setText("Salir");
+
+        itemSalir.setText("Cerrar");
+        itemSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSalirActionPerformed(evt);
+            }
+        });
+        jMenu4.add(itemSalir);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -419,6 +437,9 @@ public class Vista extends javax.swing.JFrame {
 
     private void txtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloActionPerformed
         // TODO add your handling code here:
+        
+
+}
     }//GEN-LAST:event_txtTituloActionPerformed
 
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
@@ -466,12 +487,15 @@ public class Vista extends javax.swing.JFrame {
         TareasCompletas objTareasCompletas = new TareasCompletas();
         objTareasCompletas.setVisible(true);
         this.setVisible(false);
+    System.exit(0);
+
        
     }//GEN-LAST:event_Menu3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void itemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSalirActionPerformed
+    System.exit(0);        // TODO add your handling code here:
+    }//GEN-LAST:event_itemSalirActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -487,6 +511,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JCheckBox cbxCompleto;
     private javax.swing.JCheckBox cbxIncompleto;
+    private javax.swing.JMenuItem itemSalir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
@@ -506,6 +531,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;

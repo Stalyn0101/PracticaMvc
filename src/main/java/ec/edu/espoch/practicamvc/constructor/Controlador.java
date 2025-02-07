@@ -8,38 +8,141 @@ import ec.edu.espoch.practicamvc.Vista.Vista;
 import ec.edu.espoch.practicamvc.modelo.GestorTarea;
 import ec.edu.espoch.practicamvc.modelo.Tarea;
 
-
 /**
  *
  * @author HP
  */
 public class Controlador {
-    private Vista vista;
-    private GestorTarea modelo;
+
+      private Vista vista;
+    private GestorTarea GestorTarea;
+    private Tarea tarea;
+    private tareaPendiente tareapendiente;
 
     public Controlador(Vista vista) {
         this.vista = vista;
-        this.modelo = new GestorTarea();
+        this.GestorTarea = new GestorTarea();
+        this.tarea = new tarea();
     }
 
-    public void procesoGestorTareas() {
-        String titulo, descripcion, estado;
-
+    public void agregarTarea() {
         try {
-            titulo = vista.getNombreTarea();
-            descripcion = vista.getDescripcionTarea();
-            estado = vista.getEstadoSeleccionado(); 
 
-            if (titulo.isEmpty() || descripcion.isEmpty() || estado.isEmpty()) {
-                throw new Exception("Por favor complete todos los campos y seleccione un estado.");
+            String titulo = vista.getitulo();
+            String descripcion = vista.getdescripcion();
+            if (titulo != null && descripcion != null) {
+                tarea.setTitulo(titulo);
+                tarea.setDescripcion(descripcion);
+                GestorTarea.agregartarea(tarea);
+
+            } else {
+                Vista.Error();
             }
+        } catch (Error e) {
 
-            modelo.agregarTarea(0, titulo, descripcion, true);
-
-            vista.Error("Tarea registrada con éxito.");
-
-        } catch (Exception e) {
-            vista.Error("Error: " + e.getMessage());
         }
     }
+
+    public void listarTarea() {
+        Tarea[] tareas = GestorTarea.tareaCompleta();
+        String tareasPendientes="";
+            //convertir el vector en un String
+            tareasPendientes=tareasPendientes+
+        
+
+        tareapendiente = new tareaPendiente();
+        tareapendiente.mostrarPendientes(tareasPendientes);
+
+    }
 }
+
+public class Controlador
+    
+    private Vista vista;
+    private GestorTarea GestorTarea;
+    private Tarea tarea;
+    private tareaPendiente tareapendiente;
+
+    public Controlador(Vista vista) {
+        this.vista = vista;
+        this.GestorTarea = new GestorTarea();
+        this.tarea = new Tareas();
+    }
+
+    /*public void porcesoGestorTareas(){
+        /*si los datos estan correctos pasa al modelo
+        caso contrario los devuelve a la vista
+     */
+    public void agregarTarea() {
+        try {
+
+            String titulo = vista.getTitulo();
+            String descripcion = vista.getDescripcion();
+            if (titulo != null && descripcion != null) {
+                tarea.setTitulo(titulo);
+                tarea.setDescripcion(descripcion);
+                GestorTarea.agregarTarea(tarea);
+
+            } else {
+                vista.Error();
+            }
+        } catch (Error e) {
+
+        }
+    }
+  
+    public void listarTarea() {
+        Tareas[] tareas = gestorTarea.TareaCompleta();
+        String tareasPendientes="";
+            //convertir el vector en un String
+            tareasPendientes=tareasPendientes+
+        
+
+        pendiente = new Pendiente();
+        pendiente.mostrarPendientes(tareasPendientes);
+
+    }
+}
+
+public class Controlador 
+
+    private Vista vista;
+    private gestorTareas gestorTarea;
+    private Tareas tarea;
+    private Pendiente pendiente;
+
+    public Controlador(Vista vista) {
+        this.vista = vista;
+        this.gestorTarea = new gestorTareas();
+        this.tarea = new Tareas();
+    }
+
+  
+    public void agregarTarea() {
+        try {
+
+            String titulo = vista.getTitulo();
+            String descripcion = vista.getDescripcion();
+            if (titulo != null && descripcion != null) {
+                tarea.setTitulo(titulo);
+                tarea.setDescripcion(descripcion);
+                gestorTarea.agregarTarea(tarea);
+
+            } else {
+                vista.Error();
+            }
+        } catch (Error e) {
+
+        }
+    }
+
+    public void listarTarea() {
+        Tareas[] tareas = gestorTarea.TareaCompleta();
+        String tareasPendientes="";
+        
+        pendiente = new Pendiente();
+        pendiente.mostrarPendientes(tareasPendientes);
+
+    }
+}
+

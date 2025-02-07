@@ -22,6 +22,11 @@ public class Tarea {
         this.completada = false;
     }
 
+    public Tarea() {
+    }
+
+    
+
     public int getId() {
         return id;
     }
